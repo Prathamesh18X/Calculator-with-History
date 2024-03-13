@@ -18,11 +18,25 @@ const Calculator = () => {
     localStorage.setItem("calculatorHistory", JSON.stringify(history));
   }, [history]);
 
+  const updateExpression = (exp) => {
+    try {
+      const fn = new Function('return ' + exp);
+      return fn();
+    } catch (error) {
+      console.error('there is error in your expression:', error);
+      return null;
+    }
+  };
+
   const handleInput = (value) => {
     if (value === "=") {
-      const newResult = eval(query).toString();
-      setResult(newResult);
-      setHistory([...history, { query, result: newResult }]);
+      const newResult = updateExpression(query);
+      if (newResult !== null) {
+        setResult(newResult.toString());
+        setHistory([...history, { query, result: newResult.toString() }]);
+      } else {
+        setResult("Error");
+      }
       setQuery("");
     } else {
       setQuery((prevQuery) => prevQuery + value);
@@ -70,13 +84,13 @@ const Calculator = () => {
             <button onClick={() => clearEnd()}>CE</button>
             <button onClick={() => clearAll()}>C</button>
             <button onClick={() => deleteLast()}>← </button>
-            <button onClick={() => handleInput("/")}>÷</button>
+            <button onClick={() => handleInput("÷")}>÷</button>
           </div>
           <div className="row">
             <button onClick={() => handleInput("7")}>7</button>
             <button onClick={() => handleInput("8")}>8</button>
             <button onClick={() => handleInput("9")}>9</button>
-            <button onClick={() => handleInput("*")}>×</button>
+            <button onClick={() => handleInput("×")}>×</button>
           </div>
           <div className="row">
             <button onClick={() => handleInput("4")}>4</button>
