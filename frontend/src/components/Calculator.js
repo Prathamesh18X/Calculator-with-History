@@ -58,7 +58,7 @@ const Calculator = () => {
         <HistoryPanel>{historyList}</HistoryPanel>
       </div>
       <div className="gadget">
-        <span className="title">Standard Calulator</span>
+        <span className="title">Standard Calculator</span>
         <div className="display">
           <input type="text" value={query} readOnly />
           <br />
