@@ -84,13 +84,13 @@ const Calculator = () => {
             <button onClick={() => clearEnd()}>CE</button>
             <button onClick={() => clearAll()}>C</button>
             <button onClick={() => deleteLast()}>← </button>
-            <button onClick={() => handleInput("÷")}>÷</button>
+            <button onClick={() => handleInput("/")}>÷</button>
           </div>
           <div className="row">
             <button onClick={() => handleInput("7")}>7</button>
             <button onClick={() => handleInput("8")}>8</button>
             <button onClick={() => handleInput("9")}>9</button>
-            <button onClick={() => handleInput("×")}>×</button>
+            <button onClick={() => handleInput("*")}>×</button>
           </div>
           <div className="row">
             <button onClick={() => handleInput("4")}>4</button>
